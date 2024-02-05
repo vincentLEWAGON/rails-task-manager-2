@@ -1,0 +1,20 @@
+<!-- FILEPATH: /Users/vincentschmitt/code/vincentLEWAGON/rails-task-manager-2/app/views/tasks/index.html.erb -->
+
+<h1>Toutes les tâches</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= check_box_tag 'task_completed', '1', task.completed %>
+      <%= link_to task.title, show_path(task.id) %>
+      <%= link_to "modifier", edit_path(task) %>
+        <%= link_to destroy_path(task.id), data: {turbo_method: :delete, turbo_confirm: "Voulez vous vraiment supprimer #{task.title}?"} do %>
+         <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
+
+ <%= link_to new_task_path do %>
+    <i class="fa-solid fa-plus"></i> Add a new task
+  <% end %>
