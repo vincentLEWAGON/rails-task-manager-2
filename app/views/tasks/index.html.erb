@@ -8,6 +8,7 @@
       <%= check_box_tag 'task_completed', '1', task.completed %>
       <%= link_to task.title, show_path(task.id) %>
       <%= link_to "modifier", edit_path(task) %>
+      <!-- attention .id extremement important sur le destroy-->
         <%= link_to destroy_path(task.id), data: {turbo_method: :delete, turbo_confirm: "Voulez vous vraiment supprimer #{task.title}?"} do %>
          <i class="fa-regular fa-trash-can"></i>
         <% end %>
@@ -16,5 +17,5 @@
 </ul>
 
  <%= link_to new_task_path do %>
-    <i class="fa-solid fa-plus"></i> Add a new task
+    <i class="fa-solid fa-plus"></i>Ajouter une nouvelle tâche
   <% end %>
